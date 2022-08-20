@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: MongiBGQueue
+## Notes: Instant ress and queue /mbg
+## Author: Mongidawg
+## SavedVariables: MongiBG
+## Version: 1.0
+
+MongiBG.lua
+MongiBG.xml

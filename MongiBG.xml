@@ -1,0 +1,365 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<Frame name="MongiBGFrame" hidden="true" toplevel="true" enableMouse="true" movable="true" parent="UIPartent">
+
+	<Size>
+		<AbsDimension x="150" y="165" />
+	</Size>
+
+	<Anchors>
+		<Anchor point="CENTER">
+			<Offset>
+				<Absdimension x="0" y="0" />
+			</Offset>
+		</Anchor>
+	</Anchors>
+	
+	<Backdrop name="MongiBGFrameBackdrop" bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<EdgeSize>
+			<AbsValue val="24" />
+		</EdgeSize>
+		<BackgroundInsets>
+			<AbsInset left="5" right="5" top="5" bottom="5"/>
+		</BackgroundInsets>
+	</Backdrop>
+	
+	<Frames>
+	
+		<Button name="MongiBGButtonClose" inherits="UIPanelCloseButton">
+			<Size>
+				<AbsDimension x="24" y="24"/>
+			</Size>
+		    <Anchors>
+				<Anchor point="TOPRIGHT">
+					<Offset>
+						<AbsDimension x="-4" y="-4"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</Button>
+		
+		<CheckButton name="MongiBGCheckbuttonQueue" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonQueueText">
+					<Offset>
+						<AbsDimension x="-27" y="0" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.autoqueue then
+						MongiBG.autoqueue = false
+						this:SetChecked(false)
+					elseif not MongiBG.autoqueue then
+						MongiBG.autoqueue = true
+						this:SetChecked(true)
+						queue()
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonJoin" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonQueue">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.autojoin then
+						MongiBG.autojoin = false
+						this:SetChecked(false)
+					elseif not MongiBG.autojoin then
+						MongiBG.autojoin = true
+						this:SetChecked(true)
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonAccept" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonJoin">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.autoaccept then
+						MongiBG.autoaccept = false
+						this:SetChecked(false)
+					elseif not MongiBG.autoaccept then
+						MongiBG.autoaccept = true
+						this:SetChecked(true)
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonLeave" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonAccept">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.autoleave then
+						MongiBG.autoleave = false
+						this:SetChecked(false)
+					elseif not MongiBG.autoleave then
+						MongiBG.autoleave = true
+						this:SetChecked(true)
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonResurrect" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonLeave">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.autoresurrect then
+						MongiBG.autoresurrect = false
+						this:SetChecked(false)
+					elseif not MongiBG.autoresurrect then
+						MongiBG.autoresurrect = true
+						this:SetChecked(true)
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonWSG" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonResurrect">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.wsg then
+						MongiBG.wsg = false
+						this:SetChecked(false)
+					elseif not MongiBG.wsg then
+						MongiBG.wsg = true
+						this:SetChecked(true)
+						queue()
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonAB" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonWSG">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.ab then
+						MongiBG.ab = false
+						this:SetChecked(false)
+					elseif not MongiBG.ab then
+						MongiBG.ab = true
+						this:SetChecked(true)
+						queue()
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+		<CheckButton name="MongiBGCheckbuttonAV" inherits="OptionsCheckButtonTemplate">
+			<Size>
+				<AbsDimension x="24" y="24" />
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="MongiBGCheckbuttonAB">
+					<Offset>
+						<AbsDimension x="0" y="-15" />
+					</Offset>
+				</Anchor>
+			</Anchors>
+			<Scripts>
+				<OnClick>
+					if MongiBG.av then
+						MongiBG.av = false
+						this:SetChecked(false)
+					elseif not MongiBG.av then
+						MongiBG.av = true
+						this:SetChecked(true)
+						queue()
+					end
+				</OnClick>
+			</Scripts>
+		</CheckButton>
+		
+	</Frames>
+	
+	<Layers>
+		<Layer level="ARTWORK">
+		
+			<FontString name="MongiBGFrameTitle" inherits="GameFontNormal" text="MongiBG">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="2" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			
+			<Texture name="GameMenuFrameHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+				<Size>
+					<AbsDimension x="200" y="64"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="16"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Texture>
+			
+			<FontString name="MongiBGFrameVersion" inherits="GameFontNormalSmall" text="MongiBG.version">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-11" y="8" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			
+			<FontString name="MongiBGFrameCheckbuttonQueueText" inherits="GameFontNormalSmall" text="Auto-queue">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-31" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonJoinText" inherits="GameFontNormalSmall" text="Auto-join">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonQueueText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonAcceptText" inherits="GameFontNormalSmall" text="Auto-accept">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonJoinText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonLeaveText" inherits="GameFontNormalSmall" text="Auto-leave">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonAcceptText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonResurrectText" inherits="GameFontNormalSmall" text="Auto-resurrect">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonLeaveText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonWSGText" inherits="GameFontNormalSmall" text="WSG">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonResurrectText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonABText" inherits="GameFontNormalSmall" text="AB">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonWSGText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			<FontString name="MongiBGFrameCheckbuttonAVText" inherits="GameFontNormalSmall" text="AV">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="MongiBGFrameCheckbuttonABText">
+						<Offset>
+							<AbsDimension x="0" y="-15" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</FontString>
+			
+		</Layer>
+	</Layers>
+	
+	<Scripts>
+		<OnMouseDown>
+			if ((arg1 == "LeftButton")) then
+				this:StartMoving()
+			end
+		</OnMouseDown>
+		<OnMouseUp>
+			if(arg1 == "LeftButton") then
+				this:StopMovingOrSizing();
+			end
+		</OnMouseUp>
+	</Scripts>
+	
+</Frame>
+</Ui>
